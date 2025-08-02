@@ -21,7 +21,8 @@ export async function fetchBlogPosts() {
 
 export async function fetchSingleBlogPost(id: string)
 {
-	const data = await sql`SELECT b.id as key, b.title as title, b.date_published as "datePublished", b.cover as cover, a.avatar as "authorIcon",a.full_name as "authorName",b.tags as tags,b.content as content FROM blog AS b INNER JOIN blog_authors AS a ON b.author_id=a.id where b.id=${`${id}`}`;
+	await sql`UPDATE blog SET times_read = times_read + 1 where id=${`${id}`}`;
+	const data = await sql`SELECT b.id as key, b.title as title, b.date_published as "datePublished", b.cover as cover, a.avatar as "authorIcon",a.full_name as "authorName",b.tags as tags,b.content as content, b.related_post_1 as "relatedPost1", b.related_post_2 as "relatedPost2" FROM blog AS b INNER JOIN blog_authors AS a ON b.author_id=a.id where b.id=${`${id}`}`;
     const blogPosts = data.map((post) => ({
       ...post
     }));

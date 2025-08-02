@@ -96,40 +96,39 @@ export function BlogPostComments({ id } : { id: string })
   );
 }
 
-export function BlogPostRelatedPosts({ id } : { id: string })
+export function BlogPostRelatedPosts({ children } : { children: React.ReactNode })
 {
   return (
 	<section className="px-6 py-12">
   	  <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-12 gap-4">
 	    <h2 className="text-2xl font-semibold mb-4">Related Posts</h2>
   	    <div className="max-w-4xl mx-auto grid grid-cols-2 gap-4">
-          <div className={`flex-1 bg-gray-900 rounded-lg`}>
-          <div className="w-full h-48 flex-shrink-0 relative">
-            <Image
-              src="/images/blog-2.jpg"
-              alt="Just a test"
-              fill
-              className="w-full h-48 object-cover rounded-t-lg"
-            />
-          </div>
-          <h2 className={`${robotoMono.className} text-lg font-semibold mb-2 pt-4 pl-4 pr-4`}>Tailwind CSS: Practical Techniques for Clean and Scalable Design</h2>
-          <p className={`${robotoMono.className} text-sm text-gray-600 pl-4 pr-4 pb-6`}>A guide to using Tailwind efficiently—covering utility-first methodology, responsive design, dark mode, reusability patterns, and real-world styling examples that reflect modern UI trends.</p>
-          </div>
-
-		  <div className={`flex-1 bg-gray-900 rounded-lg`}>
-          <div className="w-full h-48 flex-shrink-0 relative">
-            <Image
-              src="/images/blog-3.jpg"
-              alt="Just a test"
-              fill
-              className="w-full h-48 object-cover rounded-t-lg"
-            />
-          </div>
-          <h2 className={`${robotoMono.className} text-lg font-semibold mb-2 pt-4 pl-4 pr-4`}>How to Build a Full Authentication Flow with Next.js and Auth.js</h2>
-          <p className={`${robotoMono.className} text-sm text-gray-600 pl-4 pr-4 pb-6`}>Step-by-step explanation of building a secure authentication system with Auth.js (formerly NextAuth), environment variables, middleware, protected routes, and session handling in a Next.js application.</p>
-          </div>
+		{children}
 	    </div>
 	  </div>
 	</section>
   );
+}
+
+export function BlogRelatedPost( { id, cover, title, summary }: { id:string; cover: string; title: string; summary: string; } )
+{
+  const router = useRouter();
+  const handleClick = () => {
+	router.push("../blog/" + id);
+  };
+
+	return (
+	  <div className={`flex-1 bg-gray-900 rounded-lg cursor-pointer`} onClick={handleClick}>
+	  <div className="w-full h-48 flex-shrink-0 relative">
+		<Image
+		  src={`/images/${cover}`}
+		  alt={title}
+		  fill
+		  className="w-full h-48 object-cover rounded-t-lg"
+		/>
+	  </div>
+	  <h2 className={`${robotoMono.className} text-lg font-semibold mb-2 pt-4 pl-4 pr-4`}>{title}</h2>
+	  <p className={`${robotoMono.className} text-sm text-gray-600 pl-4 pr-4 pb-6`}>{summary}</p>
+	  </div>
+	);
 }

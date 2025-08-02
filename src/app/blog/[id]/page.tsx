@@ -1,13 +1,15 @@
 import { notFound } from 'next/navigation';
 import { HeaderSection } from '@/components/HeaderSection';
 import { HeaderLink } from '@/components/HeaderLink';
-import { BlogPostFullPage, BlogPostComments, BlogPostRelatedPosts } from '@/components/BlogPostFullPage';
+import { BlogPostFullPage, BlogPostComments, BlogPostRelatedPosts, BlogRelatedPost } from '@/components/BlogPostFullPage';
 import { HeroSection } from '@/components/Hero';
 import { fetchSingleBlogPost } from '@/lib/data';
 import parse from 'html-react-parser';
 
 export default async function BlogPostPage({ params }: { params: { id: string } }) {
   const post = await fetchSingleBlogPost(params.id);
+  const postRelated1 = post.relatedPost1 == 0 ? null : await fetchSingleBlogPost(post.relatedPost1);
+  const postRelated2 = post.relatedPost2 == 0 ? null : await fetchSingleBlogPost(post.relatedPost2);
 
   if (!post) return notFound(); // returns 404
 
@@ -29,15 +31,28 @@ export default async function BlogPostPage({ params }: { params: { id: string } 
 		authorName={post.authorName}
 		authorIcon={`/images/${post.authorIcon}`}
 		cover={`/images/${post.cover}`}>
-		{post.content.split('\n').map((line, index) => (
-        <span key={index}>
-          {parse(line)}
-          <br />
-        </span>
-      ))}
+			{parse(post.content)}
+		
 	</BlogPostFullPage>
 	
 	<BlogPostRelatedPosts id={post.id}>
+		{post.relatedPost1 != 0 &&
+		<BlogRelatedPost 
+			id={postRelated1.key}
+			cover={postRelated1.cover}
+			title={postRelated1.title}
+			summary={postRelated1.summary}
+		/>
+		}
+
+		{post.relatedPost2 != 0 &&
+		<BlogRelatedPost 
+			id={postRelated2.key}
+			cover={postRelated2.cover}
+			title={postRelated2.title}
+			summary={postRelated2.summary}
+		/>
+		}
 	</BlogPostRelatedPosts>
 	
 	<BlogPostComments id={post.id}>
