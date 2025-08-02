@@ -3,7 +3,8 @@ import { HeaderSection } from '@/components/HeaderSection';
 import { HeaderLink } from '@/components/HeaderLink';
 import { BlogPostFullPage, BlogPostComments, BlogPostRelatedPosts, BlogRelatedPost } from '@/components/BlogPostFullPage';
 import { HeroSection } from '@/components/Hero';
-import { fetchSingleBlogPost } from '@/lib/data';
+import { fetchSingleBlogPost, fetchBlogPostComments } from '@/lib/data';
+import Image from 'next/image';
 import parse from 'html-react-parser';
 
 export default async function BlogPostPage({ params }: { params: { id: string } }) {
@@ -24,7 +25,7 @@ export default async function BlogPostPage({ params }: { params: { id: string } 
 	</HeaderSection>
 	
 	<BlogPostFullPage 
-		id={post.id}
+		id={post.key}
 		title={post.title}
 		date={post.datePublished.toLocaleDateString('tr-TR')}
 		tags={post.tags.split(",")}
@@ -35,7 +36,7 @@ export default async function BlogPostPage({ params }: { params: { id: string } 
 		
 	</BlogPostFullPage>
 	
-	<BlogPostRelatedPosts id={post.id}>
+	<BlogPostRelatedPosts id={post.key}>
 		{post.relatedPost1 != 0 &&
 		<BlogRelatedPost 
 			id={postRelated1.key}
@@ -55,8 +56,32 @@ export default async function BlogPostPage({ params }: { params: { id: string } 
 		}
 	</BlogPostRelatedPosts>
 	
-	<BlogPostComments id={post.id}>
+	<BlogPostComments id={post.key}>
+		<BlogPostComment id={post.key} />
 	</BlogPostComments>
     </>
   );
+}
+
+export async function BlogPostComment({ id } : { id: string })
+{
+	const comments = await fetchBlogPostComments(id);
+	return (
+		<>
+	      <h2 className="text-2xl font-semibold mb-4">Comments ({comments.length})</h2>
+		  <div className="space-y-2">
+		    {comments.map((comment) => (
+		  	<div key="{comment.key}" className="flex border border-gray-700 rounded-lg p-4 bg-gray-800">
+			  <div className="w-16 p-2">
+			    <Image src="/images/user.png" alt="" width={256} height={256} />
+			  </div>
+			  <div className="flex flex-1 items-center pl-3">
+			    <p className="text-sm text-gray-700 dark:text-gray-300">{comment.comment}<br />
+			    <span className="text-xs text-gray-500 mt-2">by {comment.authorName} • {comment.dateAdded.toLocaleDateString('tr-TR')}</span></p>
+			  </div>
+		    </div>
+			))}
+		  </div>
+		</>
+	);
 }

@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { lusitana, robotoMono } from '@/components/ui/fonts';
 import sanitizeHtml from 'sanitize-html';
+import { CommentForm } from '@/app/blog/CommentForm.tsx';
 
 export function BlogPostFullPage({ id, title, date, tags, authorName, authorIcon, cover, children }: { id, title, date, tags, authorName, authorIcon, cover: string; children: React.ReactNode })
 {
@@ -28,7 +29,7 @@ export function BlogPostFullPage({ id, title, date, tags, authorName, authorIcon
 			</p>
 		  </div>
 		  
-		<Image src={cover} alt={title} width={1920} height={1080} className="rounded-lg mb-8 w-full h-auto pt-8" />
+		<Image src={cover} alt={title} width={1920} height={1080} alt="" className="rounded-lg mb-8 w-full h-auto pt-8" />
 		
 		  {/* Tags */}
 		  <div className="flex gap-2 flex-wrap">
@@ -48,48 +49,17 @@ export function BlogPostFullPage({ id, title, date, tags, authorName, authorIcon
   );
 }
 
-export function BlogPostComments({ id } : { id: string })
+export function BlogPostComments({ id, children } : { id: string; children: React.ReactNode })
 {
   return (
 	<section className="px-6 py-12">
   	  <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
 	    <h2 className="text-2xl font-semibold mb-4">Shout Out Your Opinion, I Would Love To Hear It</h2>
-		{/*<form onSubmit={handleSubmit} className="mt-8 space-y-4">*/}
-		  <textarea
-			name="comment"
-			rows={4}
-			placeholder="Leave your comment..."
-			className="w-full p-3 border border-gray-700 rounded-lg focus:outline-none focus:ring focus:ring-blue-300 dark:bg-gray-900 dark:text-white"
-			required
-		  />
-		  <input
-			type="text"
-			name="name"
-			placeholder="Your name"
-			className="w-full p-3 border border-gray-700 rounded-lg dark:bg-gray-900 dark:text-white"
-			required
-		  />
-		  <div className="p-1"></div>
-		  <button
-			type="submit"
-			className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700"
-			>
-		  Submit Comment
-		  </button>
-		  {/*</form>*/}
-
+		<CommentForm id={id}>
+		</CommentForm>
+	    
 		<section className="mt-16">
-	      <h2 className="text-2xl font-semibold mb-4">Comments (0)</h2>
-		  <div className="space-y-6">
-		  {/*
-		    {comments.map((comment) => (
-		  	  <div key={comment.id} className="border rounded-lg p-4 bg-white dark:bg-gray-800">
-			    <p className="text-sm text-gray-700 dark:text-gray-300">{comment.text}</p>
-			    <p className="text-xs text-gray-400 mt-2">by {comment.name} • {formatDate(comment.date)}</p>
-			  </div>
-			))}
-				*/}
-		  </div>
+		{children}
 		</section>
 	  </div>
 	</section>
