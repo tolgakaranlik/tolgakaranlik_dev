@@ -33,7 +33,7 @@ export function HeaderSection({ children }: Props) {
 
       {/* Mobile Menu */}
       {menuOpen && (
-        <div className="md:hidden bg-white dark:bg-gray-900 px-4 pb-4 space-y-2">
+        <div className="md:hidden bg-white dark:bg-gray-900 px-4 pb-4 flex flex-col space-y-2">
 		{children}
         </div>
       )}

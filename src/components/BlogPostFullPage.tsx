@@ -1,0 +1,135 @@
+'use client';
+import Image from 'next/image';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import { lusitana, robotoMono } from '@/components/ui/fonts';
+import sanitizeHtml from 'sanitize-html';
+
+export function BlogPostFullPage({ id, title, date, tags, authorName, authorIcon, cover, children }: { id, title, date, tags, authorName, authorIcon, cover: string; children: React.ReactNode })
+{
+  return (
+    <section className="px-6 py-12">
+	  <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
+		<h1 className="text-2xl md:text-4xl font-bold mb-2">{title}</h1>
+		
+		  <div className="flex gap-2 pl-4 items-center pt-2">
+		  	<div className="w-10 h-10 flex-shrink-0">
+			  <Image
+			    src={authorIcon}
+			    alt={authorName}
+			    width={64}
+			    height={64}
+			    className="rounded-full w-full h-full object-cover shadow-lg"
+		  	  />
+			</div>
+
+			<p className="text-sm text-gray-500 leading-relaxed">
+			&nbsp; {authorName} &nbsp; <span className="text-gray-600">{date}</span>
+			</p>
+		  </div>
+		  
+		<Image src={cover} alt={title} width={1920} height={1080} className="rounded-lg mb-8 w-full h-auto pt-8" />
+		
+		  {/* Tags */}
+		  <div className="flex gap-2 flex-wrap">
+			{tags.map((t) => (
+			  <span key={t} className={`${robotoMono.className} text-sm bg-gray-600 px-2 py-1 rounded`}>
+				{t}
+			  </span>
+			))}
+		  </div>
+		  <div className="p-2"></div>
+
+		<article className={`${robotoMono.className} text-gray-500 prose prose-lg prose-slate dark:prose-invert text-justify`}>
+			{children}
+		</article>
+	  </div>
+	</section>
+  );
+}
+
+export function BlogPostComments({ id } : { id: string })
+{
+  return (
+	<section className="px-6 py-12">
+  	  <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
+	    <h2 className="text-2xl font-semibold mb-4">Shout Out Your Opinion, I Would Love To Hear It</h2>
+		{/*<form onSubmit={handleSubmit} className="mt-8 space-y-4">*/}
+		  <textarea
+			name="comment"
+			rows={4}
+			placeholder="Leave your comment..."
+			className="w-full p-3 border border-gray-700 rounded-lg focus:outline-none focus:ring focus:ring-blue-300 dark:bg-gray-900 dark:text-white"
+			required
+		  />
+		  <input
+			type="text"
+			name="name"
+			placeholder="Your name"
+			className="w-full p-3 border border-gray-700 rounded-lg dark:bg-gray-900 dark:text-white"
+			required
+		  />
+		  <div className="p-1"></div>
+		  <button
+			type="submit"
+			className="bg-blue-600 text-white px-6 py-2 rounded-lg hover:bg-blue-700"
+			>
+		  Submit Comment
+		  </button>
+		  {/*</form>*/}
+
+		<section className="mt-16">
+	      <h2 className="text-2xl font-semibold mb-4">Comments (0)</h2>
+		  <div className="space-y-6">
+		  {/*
+		    {comments.map((comment) => (
+		  	  <div key={comment.id} className="border rounded-lg p-4 bg-white dark:bg-gray-800">
+			    <p className="text-sm text-gray-700 dark:text-gray-300">{comment.text}</p>
+			    <p className="text-xs text-gray-400 mt-2">by {comment.name} • {formatDate(comment.date)}</p>
+			  </div>
+			))}
+				*/}
+		  </div>
+		</section>
+	  </div>
+	</section>
+  );
+}
+
+export function BlogPostRelatedPosts({ id } : { id: string })
+{
+  return (
+	<section className="px-6 py-12">
+  	  <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 pb-12 gap-4">
+	    <h2 className="text-2xl font-semibold mb-4">Related Posts</h2>
+  	    <div className="max-w-4xl mx-auto grid grid-cols-2 gap-4">
+          <div className={`flex-1 bg-gray-900 rounded-lg`}>
+          <div className="w-full h-48 flex-shrink-0 relative">
+            <Image
+              src="/images/blog-2.jpg"
+              alt="Just a test"
+              fill
+              className="w-full h-48 object-cover rounded-t-lg"
+            />
+          </div>
+          <h2 className={`${robotoMono.className} text-lg font-semibold mb-2 pt-4 pl-4 pr-4`}>Tailwind CSS: Practical Techniques for Clean and Scalable Design</h2>
+          <p className={`${robotoMono.className} text-sm text-gray-600 pl-4 pr-4 pb-6`}>A guide to using Tailwind efficiently—covering utility-first methodology, responsive design, dark mode, reusability patterns, and real-world styling examples that reflect modern UI trends.</p>
+          </div>
+
+		  <div className={`flex-1 bg-gray-900 rounded-lg`}>
+          <div className="w-full h-48 flex-shrink-0 relative">
+            <Image
+              src="/images/blog-3.jpg"
+              alt="Just a test"
+              fill
+              className="w-full h-48 object-cover rounded-t-lg"
+            />
+          </div>
+          <h2 className={`${robotoMono.className} text-lg font-semibold mb-2 pt-4 pl-4 pr-4`}>How to Build a Full Authentication Flow with Next.js and Auth.js</h2>
+          <p className={`${robotoMono.className} text-sm text-gray-600 pl-4 pr-4 pb-6`}>Step-by-step explanation of building a secure authentication system with Auth.js (formerly NextAuth), environment variables, middleware, protected routes, and session handling in a Next.js application.</p>
+          </div>
+	    </div>
+	  </div>
+	</section>
+  );
+}

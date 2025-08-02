@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import "./globals.css";
-import { inter } from '../components/ui/fonts';
+import "../globals.css";
+import { inter } from '@/components/ui/fonts';
 
 export const metadata: Metadata = {
   title: 'Tolga Karanlikoglu',
-  description: 'Developer Portfolio and Blog',
+  description: 'Developer Portfolio - Blog Section',
 };
 
 export default function RootLayout({

@@ -1,6 +1,6 @@
 'use client';
 import React from 'react';
-import { lusitana } from '@/components/ui/fonts';
+import { robotoMono } from '@/components/ui/fonts';
 
 type Props = {
   visit: string;
@@ -18,7 +18,7 @@ export function HeaderLink({ visit, window = 'same', children }: Props) {
       href={visit}
       target={target}
       rel={rel}
-      className={`${lusitana.className} text-gray-700 dark:text-gray-200 hover:underline px-3 py-2`}
+      className={`${robotoMono.className} text-gray-700 dark:text-gray-200 hover:underline px-3 py-2`}
     >
       {children}
     </a>
