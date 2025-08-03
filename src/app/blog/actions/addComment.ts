@@ -30,7 +30,6 @@ export async function addComment(prevState: State, formData: FormData) {
     return { success: false, error: result.error.flatten().fieldErrors };
   }
 
-console.log("D2");
   const { postId, authorName, content } = result.data;
 
   await addCommentToDatabase(postId, authorName, content);

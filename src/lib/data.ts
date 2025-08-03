@@ -2,6 +2,14 @@ import postgres from 'postgres';
  
 const sql = postgres(process.env.POSTGRES_URL!, { ssl: 'require' });
 
+export type User = {
+  id: string;
+  email: string;
+  password: string;
+  name: string;
+  role: string;
+};
+
 export type BlogPostType = {
 	key: string;
 	title: string;
@@ -40,7 +48,7 @@ export async function fetchSingleBlogPost(id: string)
 
 export async function fetchBlogPostComments(id: string)
 {
-	const data = await sql`SELECT id, author_name as "authorName", date_added as "dateAdded", comment FROM blog_comments where blog_id=${id} and approval='Y'`;
+	const data = await sql`SELECT id, author_name as "authorName", date_added as "dateAdded", comment FROM blog_comments where blog_id=${id} and approval='Y' order by date_added desc`;
 	
 	return data;
 }
