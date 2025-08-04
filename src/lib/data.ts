@@ -46,9 +46,26 @@ export async function fetchSingleBlogPost(id: string)
     return blogPosts[0];
 }
 
+export async function fetchSingleBlogPostWithoutUpdate(id: string)
+{
+	const data = await sql`SELECT b.id as key, b.title as title, b.date_published as "datePublished", b.cover as cover, b.tags as tags,b.content as content,b.summary as summary, b.author_id as authorId FROM blog as b where b.id=${`${id}`}`;
+    const blogPosts = data.map((post) => ({
+      ...post
+    }));
+
+    return blogPosts[0];
+}
+
 export async function fetchBlogPostComments(id: string)
 {
 	const data = await sql`SELECT id, author_name as "authorName", date_added as "dateAdded", comment FROM blog_comments where blog_id=${id} and approval='Y' order by date_added desc`;
+	
+	return data;
+}
+
+export async function fetchPendingComments()
+{
+	const data = await sql`SELECT id, author_name as "authorName", date_added as "dateAdded", comment FROM blog_comments where approval='P' order by date_added desc`;
 	
 	return data;
 }

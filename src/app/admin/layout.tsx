@@ -1,8 +1,9 @@
 import { auth, getUser, signOut } from "@/auth";
 import type { Metadata } from "next";
 import "../globals.css";
-import { inter } from '../../components/ui/fonts';
+import { inter } from '@/components/ui/fonts';
 import { redirect } from "next/navigation"
+import { AdminNavlinks } from "@/components/AdminNavlinks"
 
 export const metadata: Metadata = {
   title: 'Tolga Karanlikoglu',
@@ -16,6 +17,8 @@ export default async function AdminLayout({ children }: { children: React.ReactN
     <div className="min-h-screen flex">
 	{session && (
       <aside className="w-64 bg-gray-800 text-white p-4">
+		<AdminNavlinks />
+
         <form
           action={async () => {
             'use server';
