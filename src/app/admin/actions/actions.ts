@@ -134,7 +134,7 @@ export async function addBlogEntry(prevState: any,
   redirect('/admin/blog');
 }
 
-export async function addUser(prevState: string | undefined,
+export async function addUser(prevState: any,
   formData: FormData)
 {
   const id = formData.get('id');
