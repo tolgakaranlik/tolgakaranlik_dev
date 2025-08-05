@@ -5,7 +5,10 @@ import { useActionState } from 'react';
 
 export function CommentForm({ id } : { id: string })
 {
-	const [state, formAction] = useActionState(addComment, { success: null, error: {authorName: '', content: ''} });
+	const [state, formAction, isPending] = useActionState(
+		addComment, 
+		{ success: null, error: {authorName: '', content: ''} },
+		);
 
 	return (
 	  <>
