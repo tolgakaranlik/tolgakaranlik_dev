@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import "../globals.css";
 import { inter } from '@/components/ui/fonts';
 import { redirect } from "next/navigation"
+import { adminTest } from "../actions/actions"
 import { AdminNavlinks } from "@/components/AdminNavlinks"
 
 export const metadata: Metadata = {
@@ -11,7 +12,7 @@ export const metadata: Metadata = {
 };
 
 export default async function AdminLayout({ children }: { children: React.ReactNode }) {
-  const session = await auth();
+  const user = await adminTest();
   
   return (
     <div className="min-h-screen flex">
