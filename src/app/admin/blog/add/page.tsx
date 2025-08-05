@@ -1,5 +1,5 @@
 import { adminTest } from "../../actions/actions"
-import { NewBlogEntryForm } from '../NewBlogEntryForm.tsx'
+import { NewBlogEntryForm } from '../NewBlogEntryForm'
 
 export default async function AddBlogEntryForm()
 {
