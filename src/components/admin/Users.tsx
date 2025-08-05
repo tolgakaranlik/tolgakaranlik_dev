@@ -24,7 +24,7 @@ export function Users({ children } : { children: React.ReactNode })
 	)
 }
 
-export function User({ id, name, email, role, canEdit } : { id, name, email, role, canEdit: string })
+export function User({ id, name, email, role, canEdit } : { id: string, name: string, email: string, role: string, canEdit: string })
 {
 	const handleEdit = () => {
 		if (canEdit == "0")
