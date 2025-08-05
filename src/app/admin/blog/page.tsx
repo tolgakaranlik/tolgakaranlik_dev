@@ -13,7 +13,7 @@ export default async function AdminBlog() {
 	  <br />
 	  <BlogEntries>
 	  {blogPosts.map((b) => (
-		<BlogEntry key={b.key} id={b.key} title={b.title} tags={b.tags} author={b.authorName} date={b.datePublished.toLocaleDateString('tr-TR')} canEdit={user.role} />
+		<BlogEntry key={b.key} id={b.key} title={b.title} tags={b.tags} author={b.authorName} date={b.datePublished} canEdit={user.role} />
 	  ))}
 	  </BlogEntries>
 
