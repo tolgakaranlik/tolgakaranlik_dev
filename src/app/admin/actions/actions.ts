@@ -103,7 +103,7 @@ export async function addBlogEntry(prevState: string | undefined,
   const FormSchemaUser = z.object({
     title: z.string({message: "Title field shouldn't be bank"}),
     summary: z.string({message: "Summary field shouldn't be bank"}),
-    content: z.string({content: "Content field shouldn't be bank"}),
+    content: z.string({message: "Content field shouldn't be bank"}),
     author: z.string(),
     tags: z.string()
   });
