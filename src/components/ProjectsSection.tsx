@@ -140,7 +140,7 @@ export function ProjectsSection() {
 				title="TolgaKaranlik Dev (This Site) & Admin Panel" 
 				icon="/images/profile.jpg" 
 				platforms={['HTML5','Vercel Servers', 'Neon']} 
-				tech={['NextJS', 'Tailwind CSS', 'React', 'AuthJS', 'PostgreSQL', 'Google Fonts']}>
+				tech={['NextJS', 'Tailwind CSS', 'React', 'AuthJS', 'bcrypt', 'PostgreSQL', 'Google Fonts', 'Zod']}>
 					Full web site was built from scratch by me. I have built a professional but sharp looking web site in order to display my expertise and demonstrate my recent experience as a portfolio, then deployed it onto the Vercel servers. I used Neon as the database infrastructure. I used NextJS as the main infrastructure and enhanced the experience with the Tailwind CSS. I also created an administration panel to maintain the web site and the blog. You can access full soure code from the link below.<br />&nbsp;
 					<br /><span className="text-gray-300">Github Link:</span> <Link target="_blank" className="text-gray-500 underline" href="https://github.com/tolgakaranlik/tolgakaranlik_dev">here</Link><br />
 					<br /><span className="text-gray-300">Admin Panel Link:</span> <Link target="_blank" className="text-gray-500 underline" href="https://www.tolgakaranlik.dev/admin">here</Link><br />
