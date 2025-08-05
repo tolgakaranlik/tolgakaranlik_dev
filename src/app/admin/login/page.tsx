@@ -9,7 +9,7 @@ export default async function LoginPage() {
   {
     //redirect("../admin")
 	return (
-	  <span>Session is already on</span>;
+	  <span>Session is already on</span>
 	);
   }
   
