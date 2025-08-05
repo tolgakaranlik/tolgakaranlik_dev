@@ -1,5 +1,4 @@
 import { adminTest, getUserById } from "@/app/admin/actions/actions"
-import { PageProps } from "@/lib/data"
 import { NewUserForm } from "./../../NewUserForm"
 import { redirect } from "next/navigation"
 
