@@ -1,12 +1,15 @@
-import { auth, getUser } from "@/auth"
 import { adminTest } from "./actions/actions"
 import { AdminStats } from "@/components/admin/Stats"
 
 export default async function AdminDashboard() {
-  //const session = await auth();
+  const user = await adminTest();
+  const userName = user == null ? "Admin" : user?.name;
+
   return (
-	<>
-	<span>session.user.email</span>
-	</>
+    <>
+	  <div>Welcome, {userName}</div>
+	  <br />
+	  <AdminStats />
+    </>
   )
 }

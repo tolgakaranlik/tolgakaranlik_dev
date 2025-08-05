@@ -37,20 +37,20 @@ export async function adminTest()
   const session = await auth();
 
   if (!session) {
-    //redirect("/admin/login?v=1")
-	return { name: "A1", role: "1" };
+    redirect("/admin/login")
+	return;
   }
 
   if (!session.user) {
-    //redirect("/admin/login?v=2")
-	return { name: "A2", role: "1" };
+    redirect("/admin/login")
+	return;
   }
 
   const user = await getUser(session.user.email!);
 
   if (!user) {
-    //redirect("/admin/login?v=3")
-	return { name: "A3 ("+ session.user.email +")", role: "1" };
+    redirect("/admin/login")
+	return;
   }
   
   return user;
