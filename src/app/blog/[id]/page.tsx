@@ -39,7 +39,7 @@ export default async function Page(props: { params: Promise<{ id: string }> })
 	</BlogPostFullPage>
 	
 	<BlogPostRelatedPosts>
-		{post.relatedPost1 != 0 &&
+		{post.relatedPost1 != 0 && postRelated1 != null && 
 		<BlogRelatedPost 
 			id={postRelated1.key}
 			cover={postRelated1.cover}
@@ -48,7 +48,7 @@ export default async function Page(props: { params: Promise<{ id: string }> })
 		/>
 		}
 
-		{post.relatedPost2 != 0 &&
+		{post.relatedPost2 != 0 && postRelated2 != null &&
 		<BlogRelatedPost 
 			id={postRelated2.key}
 			cover={postRelated2.cover}
