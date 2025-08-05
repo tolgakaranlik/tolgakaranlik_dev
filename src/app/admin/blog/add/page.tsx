@@ -9,7 +9,7 @@ export default async function AddBlogEntryForm()
 	  <>
 		<p className="text-2xl">Add New Blog Entry</p>
 		<br />
-		<NewBlogEntryForm id="" title="" author="" summary="" tags="" content="" cover="" />
+		<NewBlogEntryForm id="" title="" author="" summary="" tags="" content="" cover="" authorId="" />
 	  </>
 	)
 }
