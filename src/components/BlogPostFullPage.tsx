@@ -3,7 +3,6 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { lusitana, robotoMono } from '@/components/ui/fonts';
-import sanitizeHtml from 'sanitize-html';
 import { CommentForm } from '@/app/blog/CommentForm.tsx';
 
 export function BlogPostFullPage({ id, title, date, tags, authorName, authorIcon, cover, children }: { id, title, date, tags, authorName, authorIcon, cover: string; children: React.ReactNode })
