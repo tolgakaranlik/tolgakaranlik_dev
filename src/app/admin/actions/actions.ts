@@ -159,13 +159,14 @@ export async function addUser(prevState: string | undefined,
       const email = result.data.email as string;
       const name = result.data.name as string;
       const role = result.data.role as string;
-      await sql`UPDATE users SET email=${email}, name=${name}, role=${role} WHERE id=${id}`;
+	  const _id = id as string;
+      await sql`UPDATE users SET email=${email}, name=${name}, role=${role} WHERE id=${_id}`;
 
       const passwordToEdit = String(formData.get('password'));
 	  if (passwordToEdit != null && passwordToEdit != "")
 	  {
         const hashedPasswordToEdit = await bcrypt.hash(passwordToEdit, 12);
-		await sql`UPDATE users SET password=${hashedPasswordToEdit} WHERE id=${id}`;
+		await sql`UPDATE users SET password=${hashedPasswordToEdit} WHERE id=${_id}`;
 	  }
 	}	
 
