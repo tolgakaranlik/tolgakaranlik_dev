@@ -5,7 +5,7 @@ import { useRouter } from 'next/navigation';
 import { lusitana, robotoMono } from '@/components/ui/fonts';
 import { CommentForm } from '@/app/blog/CommentForm';
 
-export function BlogPostFullPage({ id, title, date, tags, authorName, authorIcon, cover, children }: { id: string, title: string, date: string, tags: string, authorName: string, authorIcon: string, cover: string; children: React.ReactNode })
+export function BlogPostFullPage({ id, title, date, tags, authorName, authorIcon, cover, children }: { id: string, title: string, date: string, tags: string[], authorName: string, authorIcon: string, cover: string; children: React.ReactNode })
 {
   return (
     <section className="px-6 py-12">
