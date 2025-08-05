@@ -6,6 +6,7 @@ import Link from 'next/link'
 export default async function AdminBlog() {
   const user = await adminTest();
   const blogPosts = await fetchBlogPosts();
+  const userRole = user == null ? "0" : user?.role;
 
   return (
     <>
@@ -13,7 +14,7 @@ export default async function AdminBlog() {
 	  <br />
 	  <BlogEntries>
 	  {blogPosts.map((b) => (
-		<BlogEntry key={b.key} id={b.key} title={b.title} tags={b.tags} author={b.authorName} date={b.datePublished} canEdit={user?.role} />
+		<BlogEntry key={b.key} id={b.key} title={b.title} tags={b.tags} author={b.authorName} date={b.datePublished} canEdit={userRole} />
 	  ))}
 	  </BlogEntries>
 
