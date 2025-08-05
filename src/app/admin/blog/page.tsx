@@ -14,7 +14,7 @@ export default async function AdminBlog() {
 	  <br />
 	  <BlogEntries>
 	  {blogPosts.map((b) => (
-		<BlogEntry key={b.key} id={b.key} title={b.title} tags={b.tags} author={b.authorName} date={b.datePublished.toISOString().split('T')[0]} canEdit={userRole} />
+		<BlogEntry key={b.key} id={b.key} title={b.title} tags={b.tags} author={b.authorName} date={b.datePublished.toString()} canEdit={userRole} />
 	  ))}
 	  </BlogEntries>
 
