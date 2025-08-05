@@ -7,14 +7,7 @@ export function CommentForm({ id } : { id: string })
 {
 	const [state, formAction] = useActionState(
 	  addComment, 
-	  {
-		success: false,
-	    error: {
-	    authorName: "",
-	    content: "",
-	    postId: "",
-	  },
-	}
+	  undefined,
 	);
 
 	return (
