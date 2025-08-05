@@ -17,7 +17,7 @@ export type BlogPostType = {
 	cover: string;
 	authorIcon: string;
 	authorName: string;
-	tags: string[];
+	tags: string;
 	summary: string;
 }
 
