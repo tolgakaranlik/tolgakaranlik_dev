@@ -145,9 +145,9 @@ export async function addUser(prevState: string | undefined,
 	  name: z.string(),
 	  role: z.enum(['0', '1']),
 	}).safeParse({
-	  email: String(formData.get('email')),
-      name: String(formData.get('name')),
-      role: String(formData.get('role')),
+	  email: formData.get('email') as string,
+      name: formData.get('name') as string,
+      role: formData.get('role') as string,
     });
 
     if (!result.success) {

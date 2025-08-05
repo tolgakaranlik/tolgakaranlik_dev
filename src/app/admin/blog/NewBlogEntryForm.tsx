@@ -6,7 +6,7 @@ import { addBlogEntry } from '../actions/actions';
 import { getAuthors } from '../actions/actions';
 import { useSearchParams } from 'next/navigation';
 
-export function NewBlogEntryForm({ id, title, author, summary, tags, content, cover, authorId } : { id: string, title: string, author, summary, tags, content: string, cover, authorId: string })
+export function NewBlogEntryForm({ id, title, author, summary, tags, content, cover, authorId } : { id: string, title: string, author: string, summary: string, tags: string, content: string, cover: string, authorId: string })
 {
   const searchParams = useSearchParams();
   const [errorMessage, formAction, isPending] = useActionState(
