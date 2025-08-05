@@ -4,7 +4,7 @@ import { fetchSingleBlogPostWithoutUpdate } from "@/lib/data"
 import { NewBlogEntryForm } from "../../NewBlogEntryForm"
 import { redirect } from "next/navigation"
 
-export default async function Page(props: { params: Promise<{ id: string }> }) {
+export default async function Page(props: { params: Promise<{ id: string }> })
 {
   const params = await props.params;
   const id = params.id;
