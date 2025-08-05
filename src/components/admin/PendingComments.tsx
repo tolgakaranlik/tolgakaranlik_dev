@@ -24,20 +24,30 @@ export function PendingComments({ children } : { children: React.ReactNode })
 	)
 }
 
-export function PendingComment({ id, dateAdded, authorName, comment } : { id, dateAdded, authorName, comment: string })
+export function PendingComment({ id, dateAdded, authorName, comment, canEdit } : { id, dateAdded, authorName, comment, canEdit: string })
 {
 	const handleApprove = async () => {
-	  const confirmed = window.confirm("Are you sure?");
-	  if (confirmed) {
-	    await approveComment(id);
+	  if (canEdit == "0")
+	  {
+		alert("Guest users cannot make changes");
+	  } else {
+	    const confirmed = window.confirm("Are you sure?");
+	    if (confirmed) {
+	      await approveComment(id);
+		}
 	  }
 	}
 
 	const handleDeny = async () => 
     {
-	  const confirmed = window.confirm("Are you sure?");
-	  if (confirmed) {
-	    await denyComment(id);
+	  if (canEdit == "0")
+	  {
+		alert("Guest users cannot make changes");
+	  } else {
+	    const confirmed = window.confirm("Are you sure?");
+	    if (confirmed) {
+	      await denyComment(id);
+		}
 	  }
     }
 

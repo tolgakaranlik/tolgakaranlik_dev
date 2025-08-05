@@ -24,17 +24,27 @@ export function Users({ children } : { children: React.ReactNode })
 	)
 }
 
-export function User({ id, name, email, role } : { id, name, email, role: string })
+export function User({ id, name, email, role, canEdit } : { id, name, email, role, canEdit: string })
 {
 	const handleEdit = () => {
-		redirect("./users/" + id + "/edit");
+		if (canEdit == "0")
+		{
+			alert("Guest users cannot make changes");
+		} else {
+			redirect("./users/" + id + "/edit");
+		}
 	}
 
 	const handleDelete = async () => 
     {
-	  const confirmed = window.confirm("Are you sure you want to delete this user?");
-	  if (confirmed) {
-	    await deleteUser(id);
+	  if (canEdit == "0")
+	  {
+		alert("Guest users cannot make changes");
+	  } else {
+	    const confirmed = window.confirm("Are you sure you want to delete this user?");
+	    if (confirmed) {
+	      await deleteUser(id);
+		}
 	  }
     }
 	

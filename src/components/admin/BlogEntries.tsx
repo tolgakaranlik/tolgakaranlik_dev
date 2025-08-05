@@ -25,17 +25,27 @@ export function BlogEntries({ children } : { children: React.ReactNode })
 	)
 }
 
-export function BlogEntry({ id, title, tags, author, date } : { id, title, tags, author, date: string })
+export function BlogEntry({ id, title, tags, author, date, canEdit } : { id, title, tags, author, date, canEdit: string })
 {
 	const handleEdit = () => {
-		redirect("./blog/" + id + "/edit");
+		if (canEdit == "0")
+		{
+			alert("Guest users cannot make changes");
+		} else {
+			redirect("./blog/" + id + "/edit");
+		}
 	}
 
 	const handleDelete = async () => 
     {
-	  const confirmed = window.confirm("Are you sure you want to delete this blog entry?");
-	  if (confirmed) {
-	    await deleteBlogEntry(id);
+	  if (canEdit == "0")
+	  {
+		alert("Guest users cannot make changes");
+	  } else {
+	    const confirmed = window.confirm("Are you sure you want to delete this blog entry?");
+	    if (confirmed) {
+	      await deleteBlogEntry(id);
+	    }
 	  }
     }
 

@@ -12,12 +12,22 @@ export default async function AdminUsers() {
 	  <br />
 	  <Users>
 	  {users.map((u) => (
-		<User key={u.id} id={u.id} name={u.name} email={u.email} role={u.role == '1' ? 'Admin' : 'Guest'} />
+		<User key={u.id} id={u.id} name={u.name} email={u.email} role={u.role == '1' ? 'Admin' : 'Guest'} canEdit={user.role} />
 	  ))}
 	  </Users>
 
 	  <br />
+	  {user.role == "0" && (
+	  <>
+	  <p className="text-red-500">Guest accounts cannot add new entries</p>
+	  <br />
+	  <span className="rounded-md h-[50px] w-58 p-4 bg-gray-800 hover:bg-gray-500 text-center text-gray-700 cursor-pointer">Add New User</span>
+	  </>
+	  )}
+
+	  {user.role == "1" && (
 	  <Link href="./users/add" className="rounded-md h-[50px] w-58 p-4 bg-gray-600 hover:bg-gray-500 text-center text-white cursor-pointer">Add New User</Link>
+	  )}
     </>
   )
 }

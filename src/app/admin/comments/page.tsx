@@ -13,7 +13,7 @@ export default async function PendingCommentsPage() {
 	  <br />
 	  <PendingComments>
 	  {pendingComments.map((c) => (
-		<PendingComment key={c.id} id={c.id} dateAdded={c.dateAdded.toLocaleDateString('tr-TR')} authorName={c.authorName} comment={c.comment} />
+		<PendingComment key={c.id} id={c.id} dateAdded={c.dateAdded.toLocaleDateString('tr-TR')} authorName={c.authorName} comment={c.comment} canEdit={user.role} />
 	  ))}
 	  </PendingComments>
 
