@@ -7,7 +7,10 @@ export default async function LoginPage() {
   
   if (session)
   {
-    redirect("../admin")
+    //redirect("../admin")
+	return (
+	  <span>Session is already on</span>;
+	);
   }
   
   return (
