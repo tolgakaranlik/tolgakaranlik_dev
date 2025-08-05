@@ -20,6 +20,9 @@ export const authConfig = {
       }
       return true;
     },
+	redirect({ url, baseUrl }) {
+      return baseUrl + '/admin';
+    },
   },
   providers: [],
 } satisfies NextAuthConfig;
