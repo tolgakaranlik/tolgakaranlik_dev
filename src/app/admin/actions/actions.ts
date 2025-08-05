@@ -40,7 +40,13 @@ export async function adminTest()
 	return;
   }
 
-  const user = await getUser(session.user.email);
+  try {
+    const user = await getUser(session.user.email);
+  } catch(error)
+  {
+    redirect("/admin/login")
+	return;
+  }
 
   if (!user) {
     redirect("/admin/login")
