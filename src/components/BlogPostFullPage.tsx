@@ -28,7 +28,7 @@ export function BlogPostFullPage({ id, title, date, tags, authorName, authorIcon
 			</p>
 		  </div>
 		  
-		<Image src={cover} alt={title} width={1920} height={1080} alt="" className="rounded-lg mb-8 w-full h-auto pt-8" />
+		<Image src={cover} alt={title} width={1920} height={1080} className="rounded-lg mb-8 w-full h-auto pt-8" />
 		
 		  {/* Tags */}
 		  <div className="flex gap-2 flex-wrap">
