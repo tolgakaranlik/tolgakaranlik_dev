@@ -7,7 +7,7 @@ export function CommentForm({ id } : { id: string })
 {
 	const [state, formAction, isPending] = useActionState(
 		addComment, 
-		{ success: null, error: any },
+		{ success: true, error: any },
 		);
 
 	return (
