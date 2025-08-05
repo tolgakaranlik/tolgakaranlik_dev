@@ -8,21 +8,13 @@ export default async function AdminBlog() {
   const blogPosts = await fetchBlogPosts();
   const userRole = user == null ? "0" : user?.role;
 
-  function formatDateLocal(date: Date) {
-    const year = date.getFullYear();
-    const month = `${date.getMonth() + 1}`.padStart(2, '0');
-    const day = `${date.getDate()}`.padStart(2, '0');
-
-    return `${year}-${month}-${day}`;
-  }
-
   return (
     <>
 	  <div>Blog Entries</div>
 	  <br />
 	  <BlogEntries>
 	  {blogPosts.map((b) => (
-		<BlogEntry key={b.key} id={b.key} title={b.title} tags={b.tags} author={b.authorName} date={formatDateLocal(b.datePublished)} canEdit={userRole} />
+		<BlogEntry key={b.key} id={b.key} title={b.title} tags={b.tags} author={b.authorName} date={b.datePublished.toISOString()} canEdit={userRole} />
 	  ))}
 	  </BlogEntries>
 
