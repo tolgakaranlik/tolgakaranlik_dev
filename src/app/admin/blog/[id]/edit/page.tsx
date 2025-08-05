@@ -19,7 +19,7 @@ export default async function Page(props: { params: Promise<{ id: string }> })
     <>
   	  <p className="text-2xl">Edit Blog Entry: {blogEntryToEdit.title}</p>
 	  <br />
-	  <NewBlogEntryForm id={id} title={blogEntryToEdit.title} tags={blogEntryToEdit.tags} author={blogEntryToEdit.authorName} summary={blogEntryToEdit.summary} content={blogEntryToEdit.content} authorId={blogEntryToEdit.authorId} />
+	  <NewBlogEntryForm id={id} title={blogEntryToEdit.title} cover={blogEntryToEdit.cover} tags={blogEntryToEdit.tags} author={blogEntryToEdit.authorName} summary={blogEntryToEdit.summary} content={blogEntryToEdit.content} authorId={blogEntryToEdit.authorId} />
 	</>
   )
 }
