@@ -23,3 +23,4 @@ export function HeaderLink({ visit, window = 'same', children }: Props) {
       {children}
     </a>
   );
+}
