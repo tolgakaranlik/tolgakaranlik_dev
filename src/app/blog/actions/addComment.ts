@@ -9,7 +9,7 @@ export type State = {
   error: string[] | null;
 };
 
-export async function addComment(prevState: State, formData: FormData) {
+export async function addComment(prevState: any, formData: FormData) {
 
   const commentSchema = z.object({
     postId: z.string(),
