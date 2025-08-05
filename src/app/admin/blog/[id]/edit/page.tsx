@@ -1,9 +1,10 @@
 import { adminTest } from "@/app/admin/actions/actions"
+import { PageProps } from "@/lib/data"
 import { fetchSingleBlogPostWithoutUpdate } from "@/lib/data"
 import { NewBlogEntryForm } from "../../NewBlogEntryForm"
 import { redirect } from "next/navigation"
 
-export default async function EditBlogEntryForm({ params }: { params: Record<string, string> })
+export default async function EditBlogEntryForm({ params }: { params: PageProps })
 {
 	const id = params.id;
 	const user = await adminTest();

@@ -1,8 +1,9 @@
 import { adminTest, getUserById } from "@/app/admin/actions/actions"
+import { PageProps } from "@/lib/data"
 import { NewUserForm } from "./../../NewUserForm"
 import { redirect } from "next/navigation"
 
-export default async function EditUserForm({ params }: { params: { id: string } })
+export default async function EditUserForm({ params }: { params: PageProps })
 {
 	const id = params.id;
 	const user = await adminTest();
