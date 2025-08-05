@@ -7,7 +7,9 @@ import { fetchSingleBlogPost, fetchBlogPostComments } from '@/lib/data';
 import Image from 'next/image';
 import parse from 'html-react-parser';
 
-export default async function BlogPostPage({ params }: { params: { id: string } }) {
+export default async function Page(props: { params: Promise<{ id: string }> })
+{
+  const params = await props.params;
   const post = await fetchSingleBlogPost(params.id);
   const postRelated1 = post.relatedPost1 == 0 ? null : await fetchSingleBlogPost(post.relatedPost1);
   const postRelated2 = post.relatedPost2 == 0 ? null : await fetchSingleBlogPost(post.relatedPost2);

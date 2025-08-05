@@ -2,12 +2,6 @@ import postgres from 'postgres';
  
 const sql = postgres(process.env.POSTGRES_URL!, { ssl: 'require' });
 
-interface PageProps {
-  params: {
-    id: string
-  }
-}
-
 export type User = {
   id: string;
   email: string;
