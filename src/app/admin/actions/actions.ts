@@ -156,10 +156,10 @@ export async function addUser(prevState: string | undefined,
         message: issue.message,
 	  }));
 	} else {
-      const email = String(result.data.email);
-      const name = String(result.data.name);
-      const role = String(result.data.role);
-      const updateResult = await sql`UPDATE users SET email=${email}, name=${name}, role=${role} WHERE id=${id}`;
+      const email = result.data.email as string;
+      const name = result.data.name as string;
+      const role = result.data.role as string;
+      await sql`UPDATE users SET email=${email}, name=${name}, role=${role} WHERE id=${id}`;
 
       const passwordToEdit = String(formData.get('password'));
 	  if (passwordToEdit != null && passwordToEdit != "")
