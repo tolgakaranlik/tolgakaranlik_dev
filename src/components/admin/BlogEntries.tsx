@@ -25,7 +25,7 @@ export function BlogEntries({ children } : { children: React.ReactNode })
 	)
 }
 
-export function BlogEntry({ id, title, tags, author, date, canEdit } : { id, title, tags, author, date, canEdit: string })
+export function BlogEntry({ id, title, tags, author, date, canEdit } : { id: string, title: string, tags: string, author: string, date: string, canEdit: string })
 {
 	const handleEdit = () => {
 		if (canEdit == "0")
