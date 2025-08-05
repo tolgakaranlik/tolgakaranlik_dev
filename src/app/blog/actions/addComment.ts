@@ -26,8 +26,10 @@ export async function addComment(prevState: any, formData: FormData)
   const result = commentSchema.safeParse(raw);
 
   if (!result.success) {
-    console.error(result.error.flatten().fieldErrors);
-    return { success: false, error: result.error.flatten().fieldErrors };
+	const errorObj = result.error.flatten().fieldErrors;
+    console.error(errorObj);
+
+    return { success: false, error: JSON.stringify(errorObj) };
   }
 
   const { postId, authorName, content } = result.data;

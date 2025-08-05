@@ -10,6 +10,15 @@ export function CommentForm({ id } : { id: string })
 	  undefined,
 	);
 
+	let errorMessageAuthor = "";
+	let errorMessageContent = "";
+	if (state?.success !== true && state?.error != null && state?.error != "")
+	{
+		const errorJson = JSON.parse(state?.error);
+		errorMessageAuthor = errorJson["authorName"];
+		errorMessageContent = errorJson["content"];
+	}
+
 	return (
 	  <>
 		<form action={formAction} className="mt-8 space-y-4">
@@ -41,12 +50,12 @@ export function CommentForm({ id } : { id: string })
 		    <p className="text-green-500 text-sm">Your comment will be published if it will be approved</p>
 		  )}
 		  
-		  {state?.success !== true && state?.error.authorName != "" && (
-		    <p className="text-red-500 text-sm">Author Name {state.error.authorName}</p>
+		  {state?.success !== true && errorMessageAuthor != "" && (
+		    <p className="text-red-500 text-sm">Author {errorMessageAuthor}</p>
 		  )}
 		  
-		  {state?.success !== true && state?.error.content != "" && (
-		    <p className="text-red-500 text-sm">Comment {state.error.content}</p>
+		  {state?.success !== true && errorMessageContent != "" && (
+		    <p className="text-red-500 text-sm">Comment {errorMessageContent}</p>
 		  )}
 		</form>
 	  </>
