@@ -65,7 +65,7 @@ export default async function Page(props: { params: Promise<{ id: string }> })
   );
 }
 
-export async function BlogPostComment({ id } : { id: string })
+async function BlogPostComment({ id } : { id: string })
 {
 	const comments = await fetchBlogPostComments(id);
 	return (
