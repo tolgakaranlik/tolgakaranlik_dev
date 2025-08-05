@@ -89,10 +89,10 @@ export async function getUserById(id: string): Promise<User | undefined> {
   }
 }
 
-export async function addBlogEntry(prevState: string | undefined,
+export async function addBlogEntry(prevState: any,
   formData: FormData)
 {
-  const id = formData.get('id');
+  const id = formData.get('id') as string;
   if (id != null && id != "")
   {
     revalidatePath('/admin/blog');
