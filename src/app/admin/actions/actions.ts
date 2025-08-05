@@ -159,7 +159,7 @@ export async function addUser(prevState: string | undefined,
       const email = String(result.data.email);
       const name = String(result.data.name);
       const role = String(result.data.role);
-      await sql`UPDATE users SET email=${email}, name=${name}, role=${role} WHERE id=${id}`;
+      const updateResult = await sql`UPDATE users SET email=${email}, name=${name}, role=${role} WHERE id=${id}`;
 
       const passwordToEdit = String(formData.get('password'));
 	  if (passwordToEdit != null && passwordToEdit != "")
