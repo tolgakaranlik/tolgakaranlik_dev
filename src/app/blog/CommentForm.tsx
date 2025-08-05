@@ -5,16 +5,16 @@ import { useActionState } from 'react';
 
 export function CommentForm({ id } : { id: string })
 {
-	const [state, formAction, isPending] = useActionState(
+	const [state, formAction] = useActionState(
+	  addComment, 
 	  {
 	    error: {
-	      authorName: "",
-	      content: "",
-	      postId: "",
-	    },
-	    success: false,
+	    authorName: "",
+	    content: "",
+	    postId: "",
 	  },
-	  addComment, 
+	  success: false,
+	}
 	);
 
 	return (
