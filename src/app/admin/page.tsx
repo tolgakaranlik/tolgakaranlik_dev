@@ -3,10 +3,11 @@ import { AdminStats } from "@/components/admin/Stats"
 
 export default async function AdminDashboard() {
   const user = await adminTest();
+  const userName = user == null ? "Admin" : user?.name;
 
   return (
     <>
-	  <div>Welcome, {user.name}</div>
+	  <div>Welcome, {userName}</div>
 	  <br />
 	  <AdminStats />
     </>
