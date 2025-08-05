@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import "../globals.css";
 import { inter } from '@/components/ui/fonts';
 import { redirect } from "next/navigation"
-import { adminTest } from "../actions/actions"
+import { adminTest } from "./actions/actions"
 import { AdminNavlinks } from "@/components/AdminNavlinks"
 
 export const metadata: Metadata = {
