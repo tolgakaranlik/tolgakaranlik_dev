@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 };
 
 export default async function AdminLayout({ children }: { children: React.ReactNode }) {
-  const session = await auth();
+  //const session = await auth();
   
   return (
     <div className="min-h-screen flex">
