@@ -38,19 +38,19 @@ export async function adminTest()
 
   if (!session) {
     //redirect("/admin/login?v=1")
-	return { name: "A1" };
+	return { name: "A1", role: "1" };
   }
 
   if (!session.user) {
     //redirect("/admin/login?v=2")
-	return { name: "A2" };
+	return { name: "A2", role: "1" };
   }
 
   const user = await getUser(session.user.email!);
 
   if (!user) {
     //redirect("/admin/login?v=3")
-	return { name: "A3 ("+ session.user.email +")" };
+	return { name: "A3 ("+ session.user.email +")", role: "1" };
   }
   
   return user;
