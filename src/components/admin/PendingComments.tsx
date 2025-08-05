@@ -24,7 +24,7 @@ export function PendingComments({ children } : { children: React.ReactNode })
 	)
 }
 
-export function PendingComment({ id, dateAdded, authorName, comment, canEdit } : { id, dateAdded, authorName, comment, canEdit: string })
+export function PendingComment({ id, dateAdded, authorName, comment, canEdit } : { id: string, dateAdded: string, authorName: string, comment: string, canEdit: string })
 {
 	const handleApprove = async () => {
 	  if (canEdit == "0")
