@@ -14,8 +14,7 @@ export function CommentForm({ id } : { id: string })
 	    postId: "",
 	  },
 	  success: false,
-	},
-	undefined
+	}
 	);
 
 	return (
