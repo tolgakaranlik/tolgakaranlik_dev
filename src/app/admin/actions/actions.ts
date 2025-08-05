@@ -145,9 +145,9 @@ export async function addUser(prevState: string | undefined,
 	  name: z.string(),
 	  role: z.enum(['0', '1']),
 	}).safeParse({
-	  email: formData.get('email'),
-      name: formData.get('name'),
-      role: formData.get('role'),
+	  email: String(formData.get('email')),
+      name: String(formData.get('name')),
+      role: String(formData.get('role')),
     });
 
     if (!result.success) {
@@ -159,7 +159,7 @@ export async function addUser(prevState: string | undefined,
       const { email, name, role } = result.data;
       await sql`UPDATE users SET email=${email}, name=${name}, role=${role} WHERE id=${id}`;
 
-      const passwordToEdit = formData.get('password');
+      const passwordToEdit = String(formData.get('password'));
 	  if (passwordToEdit != null && passwordToEdit != "")
 	  {
         const hashedPasswordToEdit = await bcrypt.hash(passwordToEdit, 12);
@@ -184,11 +184,11 @@ export async function addUser(prevState: string | undefined,
 	  message: "Password and retype must be the same",
 	  path: ["passwordRetype"]
 	}).safeParse({
-    email: formData.get('email'),
-    name: formData.get('name'),
-    password: formData.get('password'),
-    passwordRetype: formData.get('passwordRetype'),
-    role: formData.get('role'),
+    email: String(formData.get('email')),
+    name: String(formData.get('name')),
+    password: String(formData.get('password')),
+    passwordRetype: String(formData.get('passwordRetype')),
+    role: String(formData.get('role')),
   });
 	
   if (!result.success) {
