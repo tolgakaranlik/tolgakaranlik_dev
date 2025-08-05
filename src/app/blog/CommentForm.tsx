@@ -6,9 +6,16 @@ import { useActionState } from 'react';
 export function CommentForm({ id } : { id: string })
 {
 	const [state, formAction, isPending] = useActionState(
-		addComment, 
-		undefined,
-		);
+	  addComment, 
+	  {
+	    error: {
+	    authorName: "",
+	    content: "",
+	    postId: "",
+	  },
+	  success: false,
+	},
+	);
 
 	return (
 	  <>
@@ -41,11 +48,11 @@ export function CommentForm({ id } : { id: string })
 		    <p className="text-green-500 text-sm">Your comment will be published if it will be approved</p>
 		  )}
 		  
-		  {state?.success !== true && state?.error?.authorName != "" && (
+		  {state?.success !== true && state?.error.authorName != "" && (
 		    <p className="text-red-500 text-sm">Author Name {state.error.authorName}</p>
 		  )}
 		  
-		  {state?.success !== true && state?.error?.content != "" && (
+		  {state?.success !== true && state?.error.content != "" && (
 		    <p className="text-red-500 text-sm">Comment {state.error.content}</p>
 		  )}
 		</form>
