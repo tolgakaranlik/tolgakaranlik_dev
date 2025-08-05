@@ -9,13 +9,10 @@ import { useSearchParams } from 'next/navigation';
 export function NewBlogEntryForm({ id, title, author, summary, tags, content, cover, authorId } : { id: string, title: string, author: string, summary: string, tags: string, content: string, cover: string, authorId: string })
 {
   const searchParams = useSearchParams();
-  const state = useActionState(
+  const [errorMessage, formAction, isPending] = useActionState(
     addBlogEntry,
     undefined,
   );
-
-  const errorMessage = state.errorMessage as string;
-  const formAction = state.formAction;
 
 	return (
 	  <form action={formAction}>
