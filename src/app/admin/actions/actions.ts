@@ -156,7 +156,9 @@ export async function addUser(prevState: string | undefined,
         message: issue.message,
 	  }));
 	} else {
-      const { email, name, role } = result.data;
+      const email = String(result.data.email);
+      const name = String(result.data.name);
+      const role = String(result.data.role);
       await sql`UPDATE users SET email=${email}, name=${name}, role=${role} WHERE id=${id}`;
 
       const passwordToEdit = String(formData.get('password'));
