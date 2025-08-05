@@ -6,6 +6,7 @@ import { authConfig } from '@/auth.config';
 import { auth, getUser } from "@/auth";
 import { redirect } from "next/navigation"
 import { revalidatePath } from 'next/cache';
+import { User } from "@/lib/data";
 import { z } from 'zod';
 import bcrypt from 'bcrypt';
 import postgres from 'postgres';
